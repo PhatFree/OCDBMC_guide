@@ -1,4 +1,4 @@
-# # OpenOCD demo in OpenBMC
+# OpenOCD demo in OpenBMC
 
 This is how to get a "dummy" software only openOCD debug stack running on OpenBMC 
 
