@@ -1,5 +1,7 @@
 # OpenOCD demo in OpenBMC
 
+![screenshot](BMC_Remote.png)
+
 This is how to get a "dummy" software only openOCD debug stack running on OpenBMC 
 
 ## Step 1: Include OpenOCD into your local conf.
