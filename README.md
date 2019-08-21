@@ -23,7 +23,7 @@ an example: `../openbmc/meta-ibm/meta-witherspoon/conf/local.conf.sample`
 next we need to update the OpenOCD Bitbake recipe in 
 `../openbmc/meta-openembedded/meta-oe/recipes-devtools/openocd/openocd_git.bb`
 At the time of writing this, I set it to pull the latest commit from master:
-`SRCREV_openocd = "263deb3802a515ba8155b6c59146f0f539de4e43"`
+`SRCREV_openocd = "7a93c9e087b7cb0444068a3deb506eb127f758f0"`
 
 Also you need to update `libjaylink`, simply update the `SRCREV`
 `+SRCREV_libjaylink = "835e45b1a464d1ef053591aacffb3c86a4e12169"`
