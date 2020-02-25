@@ -1,8 +1,8 @@
-#OpenOCD in OpenBMC
+# OpenOCD in OpenBMC
 This is a short guide on how to get started with OpenOCD in OpenBMC.
 along with this guide, you can look at the arm remote debug refrence configuration image.
 
-##Compiling into OpenBMC image
+## Compiling into OpenBMC image
 
 ### adding OpenOCD into your image build conf.
 
@@ -11,14 +11,15 @@ An OpenOCD recipe already exists in Yocto/OpenEmbbded. to add openOCD into our i
 **Current build environment:**
 To add it into the current build environment, add `IMAGE_INSTALL += "openocd"` into your `../build/conf/local.conf`
 
-**image default:** If if you'd like to add this to every build for the machine add it to the 
+**image default:** 
+If if you'd like to add this to every build for the machine add it to the 
 `<path_to_machine_conf>/local.conf.sample`
 an example: `/meta-arm/meta-refrence/conf/local.conf.sample`
 
 **arm reference:**
 The arm reference has this done as an image default, so you'll just need to make sure you've used it as your conf, i.e.`export TEMPLATECONF=meta-arm/meta-reference/conf`
 
-####Congrats! This is all you need to have OpenOCD compiling into your image.
+#### Congrats! This is all you need to have OpenOCD compiling into your image.
 *Just to get openOCD compiled and running In OpenBMC you don't need to do any thing else.*
 it will compile with the default config that supports FTDI adapters, and the upstreamed Targets (board/SOCs).
 
@@ -28,7 +29,7 @@ it will compile with the default config that supports FTDI adapters, and the ups
 
 ## Adding adapters & targets
 
-###updating the OpenOCD recipe with a bbappend
+### updating the OpenOCD recipe with a bbappend
 
 There's a good chance you'll want to add new adapters, change the compiled adapter, add new target files, startup scripts, etc.. If any of this sounds true, you'll need to create a BBappend file for OpenOCD
 
@@ -47,7 +48,8 @@ meta-arm
 
 ```
 
-**Adding patches:**if you're adding new configs, or extending OpenOCD to work with a new JTAG adapter, the most likely way you'd do that is be applying patches to OpenOCD.
+**Adding patches:**
+if you're adding new configs, or extending OpenOCD to work with a new JTAG adapter, the most likely way you'd do that is be applying patches to OpenOCD.
 To add patches with new adapters, more targets, etc.. you can follow bitbake conventions, adding a bbappend `openocd_%.bbappend` then adding the patch to the source URI `SRC_URI += "file://<patch-to-apply>.patch"` like shown above.
 
 
@@ -63,7 +65,7 @@ If we want to add or change adapters, we really need to change the compilation f
 
 ---
 
-##Compiling & Running 
+## Compiling & Running 
 
 You should be able to compile your image, and install it on your BMC like normal. 
 
@@ -71,4 +73,5 @@ with the arm refrence, there's a patch that includeds OpenOCD/tcl script to simp
 This config enables debugging over networking, and setups openOCD with a BusBlaster and JunoR2.
 
 alteritvley you can can invoke openocd like on a normal devlopment machine, with seprate configs for your ocd varbles (transport selection, network exposure etc..) and your adpater and target.
-**example:**`root@witherspoon:~# openocd -f openocd.cfg -f scripts/interface/dummy.cfg -f scripts/board/arm_evaluator7t.cfg`
+**example:**
+`root@witherspoon:~# openocd -f openocd.cfg -f scripts/interface/dummy.cfg -f scripts/board/arm_evaluator7t.cfg`
